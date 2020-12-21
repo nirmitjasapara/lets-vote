@@ -1,0 +1,18 @@
+{"message":"insert into \"users\" (\"date_created\", \"full_name\", \"nickname\", \"password\", \"user_name\") values ($1, $2, DEFAULT, $3, $4) returning * - column \"nickname\" of relation \"users\" does not exist","level":"error"}
+{"message":"insert into \"users\" (\"date_created\", \"full_name\", \"nickname\", \"password\", \"user_name\") values ($1, $2, DEFAULT, $3, $4) returning * - column \"nickname\" of relation \"users\" does not exist","level":"error"}
+{"message":"insert into \"polls\" (\"description\", \"name\", \"user_id\") values (DEFAULT, $1, $2) returning * - null value in column \"description\" violates not-null constraint","level":"error"}
+{"message":"Cannot set property 'options' of undefined","level":"error"}
+{"message":"req.user.id is not a function","level":"error"}
+{"message":"Cannot read property 'then' of undefined","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:5432","level":"error"}
