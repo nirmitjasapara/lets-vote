@@ -1,0 +1,9 @@
+.btn_box button{
+  border: none;
+  background-color: #fff;
+  color: black;
+}
+.icons {
+  font-size: 100%;
+  cursor: pointer;
+}

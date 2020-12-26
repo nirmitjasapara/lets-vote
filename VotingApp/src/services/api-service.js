@@ -38,6 +38,34 @@ const ApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+  vote({ polloption_id }) {
+    return fetch(`${config.API_ENDPOINT}/vote`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({ polloption_id })
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  getVote(pollId) {
+    console.log(`${config.API_ENDPOINT}/vote/${pollId}`);
+    return fetch(`${config.API_ENDPOINT}/vote/${pollId}`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
   }
 }
 

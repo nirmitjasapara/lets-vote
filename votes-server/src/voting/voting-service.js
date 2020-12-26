@@ -10,6 +10,16 @@ const VotingService = {
           return rows[0]
         })
     },
+    getVote(knex, user_id, poll_id) {
+      return knex
+        .from('votes')
+        .join('polloptions', 'polloptions.id', 'votes.polloption_id')
+        .select('polloptions.id')
+        .where({
+          'user_id': user_id,
+          'poll_id': poll_id,
+        })
+    },
   }
   
   module.exports = VotingService

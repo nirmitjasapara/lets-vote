@@ -18,7 +18,7 @@ export default class AddPage extends Component {
   render() {
     return (
       <Section className='AddPage'>
-        <h2>Add Item</h2>
+        <h2>Add Poll</h2>
         <AddForm
           onAddSuccess={this.handleAddSuccess}
         />

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Button, Input, InputArea, Required } from '../Utils/Utils'
 import ApiService from '../../services/api-service'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import './AddForm.css'
 
 export default class AddForm extends Component {
   static defaultProps = {
     onAddSuccess: () => {}
   }
 
-  state = { error: null , options: [ "" ]}
+  state = { error: null , options: [ "", "" ]}
 
   handleSubmit = ev => {
     ev.preventDefault()
@@ -15,6 +18,7 @@ export default class AddForm extends Component {
     const { name, description } = ev.target
     const { options } = this.state
 
+    console.log(options);
     ApiService.addPoll({
       name: name.value,
       description: description.value,
@@ -23,7 +27,7 @@ export default class AddForm extends Component {
       .then(res => {
         name.value = ''
         description.value = ''
-        this.setState({ options: 1 })
+        this.setState({ options: [ "", "" ] })
         this.props.onAddSuccess()
       })
       .catch(res => {
@@ -34,7 +38,7 @@ export default class AddForm extends Component {
   renderOptions() {
     const { options } = this.state
     return options.map((x, i) =>
-      <div className='opt_box'>
+      <div key={'AddForm__options' + i} className='opt_box'>
         <Input
           name='options'
           placeholder="Enter Option"
@@ -42,14 +46,21 @@ export default class AddForm extends Component {
           required
           value={x}
           onChange={e => this.handleInputChange(e, i)}
+          style={{"display": "inline"}}
           id={'AddForm__options' + i}>
         </Input>
-        <div className="btn_box">
-          {options.length !== 1 && <button
-            className="mr10"
-            onClick={() => this.handleRemoveClick(i)}>Remove</button>}
-          {options.length - 1 === i && <button onClick={this.handleAddClick}>Add</button>}
-        </div>
+        <span className="btn_box">
+          {options.length > 2 && 
+            <button onClick={() => this.handleRemoveClick(i)}>
+              <FontAwesomeIcon icon={faMinusCircle} className="icons"/>
+            </button>
+          }
+          {options.length - 1 === i && 
+            <button onClick={() => this.handleAddClick()}>
+              <FontAwesomeIcon icon={faPlusCircle} className="icons"/>
+            </button>
+          }
+        </span>
       </div>
     )
   }
@@ -98,7 +109,7 @@ export default class AddForm extends Component {
         </div>
         <div className='description'>
           <label htmlFor='AddForm__description'>
-            Name <Required />
+            Description <Required />
           </label>
           <InputArea
             name='description'
@@ -112,12 +123,12 @@ export default class AddForm extends Component {
 
         <div className='options'>
           <label htmlFor='AddForm__options'>
-            Name <Required />
+            Options <Required />
           </label>
           {this.renderOptions()}
         </div>
         <Button type='submit'>
-          Add
+          Add Poll
         </Button>
       </form>
     )

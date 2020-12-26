@@ -7,6 +7,4 @@
   
 .App_main {
   background-color: white;
-  overflow: auto;
-  padding-top: var(--nav-height);
 }

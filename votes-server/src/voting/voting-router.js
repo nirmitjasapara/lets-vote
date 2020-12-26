@@ -31,5 +31,17 @@ votingRouter
     })
     .catch(next)
   })
-
+votingRouter
+  .route('/:_id')
+  .get(requireAuth, (req, res, next) => {
+    VotingService.getVote(
+      req.app.get('db'),
+      req.user.id,
+      req.params._id,
+    )
+      .then(vote => {
+        res.json(vote)
+      })
+      .catch(next)
+  })
 module.exports = votingRouter
